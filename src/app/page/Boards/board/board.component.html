@@ -2,5 +2,6 @@
 <ul *ngFor="let board of boards">
 
     <td><a [routerLink]="['/board',board.boardId]"> {{ board.nombre }}</a></td>
-
+    <button [routerLink]="['/board/updateboard',board.boardId]">Editar</button>
+    <button>Eliminar</button>
 </ul>
