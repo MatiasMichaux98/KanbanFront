@@ -1,6 +1,6 @@
 <h3>Lista de Proyectos</h3>
 <ul *ngFor="let board of boards">
-    <p>mis nombre</p>
-    <td><a> {{ board.nombre }}</a></td>
+
+    <td><a [routerLink]="['/board',board.boardId]"> {{ board.nombre }}</a></td>
 
 </ul>

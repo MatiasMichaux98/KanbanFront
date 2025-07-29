@@ -1,5 +1,5 @@
 export interface BoardResponse {
-    id : number;
+    boardId : number;
     nombre: string;
     CreateAt: string;
 }

@@ -15,5 +15,8 @@ export class BoardService {
   GetBoard():Observable<BoardResponse[]>{
     return this.http.get<BoardResponse[]>(`${this.baseUrl}Board`)
   }
+  GetBoardID(boardId:number):Observable<BoardResponse>{
+    return this.http.get<BoardResponse>(`${this.baseUrl}Board/${boardId}`)
+  }
 
 }
