@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../kanban-front/.angular"
+		},
+		{
+			"path": "../../../kanban-front/.vscode"
+		},
+		{
+			"path": "../../../kanban-front/node_modules"
+		},
+		{
+			"path": "../../../kanban-front/src"
+		}
+	]
+}
