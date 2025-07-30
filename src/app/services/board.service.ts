@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { BoardResponse } from '../interfaces/Board/BoardResponse';
 import { BoardRequest } from '../interfaces/Board/BoardRequest';
 import { BoardUpdateRequest } from '../interfaces/Board/BoardUpdateRequest';
+import { BoardCreateRequest } from '../interfaces/Board/BoardCreateRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,9 @@ export class BoardService {
   }
   BoardDelete(boardId:number):Observable<BoardResponse>{
     return this.http.delete<BoardResponse>(`${this.baseUrl}Board/DeleteBoard/${boardId}`)
+  }
+  BoardCreate(Board:BoardCreateRequest):Observable<BoardResponse>{
+    return this.http.post<BoardResponse>(`${this.baseUrl}Board/CreateBoard`,Board)
   }
   
 

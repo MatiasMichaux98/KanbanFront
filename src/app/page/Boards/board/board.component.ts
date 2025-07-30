@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { BoardUpdateComponent } from '../board-update/board-update.component';
 import { BoardDeleteComponent } from '../board-delete/board-delete.component';
+import { BoardCreateComponent } from '../board-create/board-create.component';
 @Component({
   selector: 'app-board',
   standalone: true,
@@ -29,7 +30,16 @@ export class BoardComponent {
       console.log('cargando..',this.boards);
     })
   }
-  
+  abrirModal(){
+    const dialogRef = this._matDialog.open(BoardCreateComponent,{
+
+    })
+    dialogRef.afterClosed().subscribe((CreateBoard: BoardResponse) => {
+        if(CreateBoard){
+          this.boards.unshift(CreateBoard);
+        }
+    })
+  }
   abrirModalUpdated(board: BoardResponse):void{
     const dialogRef = this._matDialog.open(BoardUpdateComponent,{
       data:board
