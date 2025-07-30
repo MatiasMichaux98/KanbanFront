@@ -1,10 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, Inject, inject } from '@angular/core';
 import { BoardResponse } from '../../../interfaces/Board/BoardResponse';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BoardService } from '../../../services/board.service';
 import { BoardRequest } from '../../../interfaces/Board/BoardRequest';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { BoardUpdateRequest } from '../../../interfaces/Board/BoardUpdateRequest';
 
 @Component({
   selector: 'app-board-update',
@@ -18,27 +20,31 @@ export class BoardUpdateComponent {
   Board!: BoardResponse;
   nombre: string = '';
 
-
   private route = inject(ActivatedRoute)
-  constructor(private boardService:BoardService){
-        this.route.params.subscribe((params) => {
-          console.log('Recibido param:', params);
-          this.BoardId = +params['boardId'] || 0
-        })
-      }
-      submit() {
-        const boardUpdate: BoardRequest = {
-          nombre: this.nombre
-        };
-      
-        this.boardService.GetBoardUpdate(this.BoardId, boardUpdate).subscribe({
-          next: (response) => {
-            console.log('Board actualizado correctamente:', response);
-          },
-          error: (error) => {
-            console.error('Error al actualizar board:', error);
-          }
-        });
-      }
+  private router = inject(Router)
+  private boardService = inject(BoardService)
+  constructor(private _matDialogRef:MatDialogRef<BoardUpdateComponent>,
+    @Inject(MAT_DIALOG_DATA) public data :BoardResponse
+  ){
+    this.BoardId = data.boardId
+    this.nombre = data.nombre
+  }
+  submit() {
+    const boardUpdate: BoardUpdateRequest = {
+      boardId: this.BoardId,
+      nombre: this.nombre
+    };
+    
+    const UpdateBoard: BoardResponse = {
+      boardId: this.BoardId,
+      nombre: this.nombre
+    }
+    this.boardService.BoardUpdate(this.BoardId, boardUpdate).subscribe(()=>{
+      this._matDialogRef.close(UpdateBoard)
+    });
+  }
+
+  
+
       
 }

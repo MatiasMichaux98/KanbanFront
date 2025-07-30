@@ -1,7 +1,6 @@
 <h3>Lista de Proyectos</h3>
 <ul *ngFor="let board of boards">
-
     <td><a [routerLink]="['/board',board.boardId]"> {{ board.nombre }}</a></td>
-    <button [routerLink]="['/board/updateboard',board.boardId]">Editar</button>
-    <button>Eliminar</button>
+    <button mat-raised-button (click)="abrirModalUpdated(board)">✏️ Editar</button>
+    <button mat-raised-button (click)="abrirModalDelete(board)">✏️Eliminar</button>
 </ul>

@@ -4,6 +4,7 @@ import { appsettings } from '../settings/appsettings';
 import { Observable } from 'rxjs';
 import { BoardResponse } from '../interfaces/Board/BoardResponse';
 import { BoardRequest } from '../interfaces/Board/BoardRequest';
+import { BoardUpdateRequest } from '../interfaces/Board/BoardUpdateRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,12 @@ export class BoardService {
   GetBoardID(boardId:number):Observable<BoardResponse>{
     return this.http.get<BoardResponse>(`${this.baseUrl}Board/${boardId}`)
   }
-  GetBoardUpdate(boardId:number,Board:BoardRequest):Observable<BoardRequest>{
+  BoardUpdate(boardId:number,Board:BoardUpdateRequest):Observable<BoardResponse>{
     return this.http.put<BoardResponse>(`${this.baseUrl}Board/UpdateBoard/${boardId}`,Board)
   }
+  BoardDelete(boardId:number):Observable<BoardResponse>{
+    return this.http.delete<BoardResponse>(`${this.baseUrl}Board/DeleteBoard/${boardId}`)
+  }
+  
+
 }
