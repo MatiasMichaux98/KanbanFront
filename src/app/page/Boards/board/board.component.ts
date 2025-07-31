@@ -7,10 +7,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { BoardUpdateComponent } from '../board-update/board-update.component';
 import { BoardDeleteComponent } from '../board-delete/board-delete.component';
 import { BoardCreateComponent } from '../board-create/board-create.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [NgFor,RouterModule],
+  imports: [NgFor,RouterModule,MatTooltipModule],
   templateUrl: './board.component.html',
   styleUrl: './board.component.css'
 })

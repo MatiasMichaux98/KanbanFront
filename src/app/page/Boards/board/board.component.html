@@ -1,7 +1,19 @@
-<h3>Lista de Proyectos</h3>
-<button mat-raised-button (click)="abrirModal()">Crear</button>
-<ul *ngFor="let board of boards">
-    <td><a [routerLink]="['/board',board.boardId]"> {{ board.nombre }}</a></td>
-    <button mat-raised-button (click)="abrirModalUpdated(board)">✏️ Editar</button>
-    <button mat-raised-button (click)="abrirModalDelete(board)">✏️Eliminar</button>
-</ul>
+<div class="layout">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <button class="CreateButton" (click)="abrirModal()">➕ Crear</button>
+    <ul class="project-list">
+      <li *ngFor="let board of boards" class="project-item">
+        <a [routerLink]="['/board', board.boardId]" class="project-name">{{ board.nombre }}</a>
+        <div class="actions">
+          <button mat-icon-button color="accent" matTooltip="Editar" (click)="abrirModalUpdated(board); $event.stopPropagation()">✏️</button>
+          <button mat-icon-button color="warn" matTooltip="Eliminar" (click)="abrirModalDelete(board); $event.stopPropagation()">🗑️</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

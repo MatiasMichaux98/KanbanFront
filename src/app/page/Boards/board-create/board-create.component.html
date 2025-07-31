@@ -1,7 +1,13 @@
-<form (ngSubmit)="createBoard()">
+<div class="MainContainer">
+  <form (ngSubmit)="createBoard()">
     <label for="nombre">Nombre del Board</label>
-    <input type="text" id="nombre" [(ngModel)]="newBoard.nombre" name="nombre" required />
-    
+    <input
+      type="text"
+      id="nombre"
+      [(ngModel)]="newBoard.nombre"
+      name="nombre"
+      required
+    />
     <button type="submit">Crear</button>
   </form>
-  
+</div>

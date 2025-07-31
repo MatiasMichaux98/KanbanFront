@@ -1,7 +1,9 @@
-<form (ngSubmit)="submit()">
+<div class="MainContainer">
+  <form (ngSubmit)="submit()">
     <label for="nombre">Nombre del Board</label>
     <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" required />
     
     <button type="submit">Actualizar</button>
-  </form>
+</form>
   
+</div>

@@ -5,9 +5,13 @@ import { BoardUpdateComponent } from './page/Boards/board-update/board-update.co
 import { BoardDeleteComponent } from './page/Boards/board-delete/board-delete.component';
 
 export const routes: Routes = [
-    //boards
-    { path: 'board', component: BoardComponent },
-    { path: 'board/:boardId', component: BoardIDComponent },
-    { path: 'board/updateboard/:boardId', component: BoardUpdateComponent },
-    { path: 'board/deleteboard/:boardId', component: BoardDeleteComponent },
-];
+    {
+      path: 'board',
+      component: BoardComponent,
+      children: [
+        { path: ':boardId', component: BoardIDComponent },
+        { path: 'updateboard/:boardId', component: BoardUpdateComponent },
+        { path: 'deleteboard/:boardId', component: BoardDeleteComponent },
+      ],
+    },
+  ];

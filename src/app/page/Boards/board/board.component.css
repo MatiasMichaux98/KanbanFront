@@ -1,0 +1,51 @@
+.layout{
+  display: flex;
+}
+.sidebar{
+  background-color:#161215 ;
+  width: 230px;
+  height: 100vh;
+  padding: 10px;
+
+}
+.project-list{
+  padding: 0;
+}
+.project-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 10px;
+  padding: 12px;
+  cursor: pointer;
+}
+.project-item:hover{
+  background-color: #554151;
+  border-radius: 20px;
+}
+.project-item a{
+  color: #EAE0E4;
+  text-decoration: none;
+}
+.project-name{
+  flex-grow: 1;
+}
+.actions button{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.actions button:hover{
+  border: 1px solid black;
+}
+.CreateButton{
+  background-color: #554151;
+  color: #aaa;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+.CreateButton:focus{
+  border: 1px solid rgb(255, 0, 166);
+}
