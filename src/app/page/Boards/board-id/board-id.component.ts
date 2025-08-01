@@ -7,7 +7,7 @@ import { NgFor, NgIf } from '@angular/common';
 @Component({
   selector: 'app-board-id',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf,NgFor],
   templateUrl: './board-id.component.html',
   styleUrl: './board-id.component.css'
 })

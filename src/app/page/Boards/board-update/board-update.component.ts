@@ -37,7 +37,8 @@ export class BoardUpdateComponent {
     
     const UpdateBoard: BoardResponse = {
       boardId: this.BoardId,
-      nombre: this.nombre
+      nombre: this.nombre,
+      lists: []
     }
     this.boardService.BoardUpdate(this.BoardId, boardUpdate).subscribe(()=>{
       this._matDialogRef.close(UpdateBoard)
