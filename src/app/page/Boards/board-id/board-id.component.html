@@ -2,13 +2,14 @@
     <div *ngIf="Board">
         <h2>{{ Board.nombre }}</h2>
         
-       <ul *ngIf="Board.lists?.length">
-        <li *ngFor="let list of Board.lists; let i = index">
-
-          <div class="TitulosMain">
-            <strong>{{ list.nombre }}</strong>
-          </div>
-        </li>
-       </ul>
+      <div class="MainContainer">
+          <ul *ngIf="Board.lists?.length">
+            <li *ngFor="let list of Board.lists; let i = index">
+              <div class="TitulosMain">
+                <strong>{{ list.nombre }}</strong>
+              </div>
+            </li>
+           </ul>
+        </div>
     </div>
     

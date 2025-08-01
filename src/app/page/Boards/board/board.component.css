@@ -6,6 +6,7 @@
   width: 230px;
   height: 100vh;
   padding: 10px;
+  border-right: 1px solid #aaa;
 
 }
 .project-list{
@@ -48,4 +49,10 @@
 }
 .CreateButton:focus{
   border: 1px solid rgb(255, 0, 166);
+}
+.content {
+  background-color: #161215;
+  flex: 1;
+  padding: 1rem;
+  overflow: auto;
 }
