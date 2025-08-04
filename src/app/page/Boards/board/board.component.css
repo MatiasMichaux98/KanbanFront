@@ -39,13 +39,19 @@
 .actions button:hover{
   border: 1px solid black;
 }
-.CreateButton{
-  background-color: #554151;
-  color: #aaa;
-  padding: 10px;
-  border-radius: 10px;
+.CreateButton {
+  background-color: #e91e63;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
   border: none;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
   cursor: pointer;
+}
+.CreateButton:hover {
+  background-color: #c2185b;
 }
 .CreateButton:focus{
   border: 1px solid rgb(255, 0, 166);
@@ -55,4 +61,18 @@
   flex: 1;
   padding: 1rem;
   overflow: auto;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+  .MainContainer ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
 }
