@@ -17,7 +17,6 @@ import { BoardUpdateRequest } from '../../../interfaces/Board/BoardUpdateRequest
 })
 export class BoardUpdateComponent {
   BoardId: number = 0;
-  Board!: BoardResponse;
   nombre: string = '';
 
   private route = inject(ActivatedRoute)

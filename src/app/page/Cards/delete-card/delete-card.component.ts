@@ -16,7 +16,6 @@ export class DeleteCardComponent {
   constructor(private _matDialogRef:MatDialogRef<DeleteCardComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CardDtoResponse
   ){
-    console.log('DATA en modal:', data);
     this.cardId = data.cardId
   }
 

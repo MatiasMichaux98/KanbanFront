@@ -8,11 +8,15 @@ import { CreateCardComponent } from '../../Cards/create-card/create-card.compone
 import { CardDtoResponse } from '../../../interfaces/Card/CardDtoResponse';
 import { DeleteCardComponent } from '../../Cards/delete-card/delete-card.component';
 import { ListaResponse } from '../../../interfaces/Lista/ListaResponse';
+import { UpdateCardComponent } from '../../Cards/update-card/update-card.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-board-id',
   standalone: true,
-  imports: [NgIf,NgFor],
+  imports: [CommonModule,MatButtonModule,MatMenuModule],
   templateUrl: './board-id.component.html',
   styleUrl: './board-id.component.css'
 })
@@ -55,6 +59,19 @@ export class BoardIDComponent {
               this.cdr.detectChanges(); 
           }
           this.cdr.detectChanges(); 
+        })
+      }
+      AbrirModalUpdate(card:CardDtoResponse):void{
+        const dialogRef = this._matDialog.open(UpdateCardComponent,{
+          data:card
+        })
+        dialogRef.afterClosed().subscribe((updateCard:CardDtoResponse) => {
+          if(updateCard && this.board?.lists){
+            this.board.lists.forEach(list => {
+              list.cards = list.cards.map(c => c.cardId == updateCard.cardId? updateCard : c)
+            })
+            this.cdr.detectChanges();
+          }
         })
       }
       AbrirModalDelete(card:CardDtoResponse):void{

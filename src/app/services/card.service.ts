@@ -24,8 +24,8 @@ export class CardService {
   CreateCard(card:CardDtoRequest):Observable<CardDtoResponse>{
     return this.http.post<CardDtoResponse>(`${this.baseUrl}Card/CreateCard`,card)
   }
-  UpdateCard(card:CardDtoRequest, id:number):Observable<CardDtoResponse>{
-    return this.http.put<CardDtoResponse>(`${this.baseUrl}Card/UpdateCard`,card)
+  UpdateCard(id:number,card:CardDtoRequest):Observable<CardDtoResponse>{
+    return this.http.put<CardDtoResponse>(`${this.baseUrl}Card/UpdateCard/${id}`,card)
   }
   DeleteCard(id:number):Observable<CardDtoResponse>{
     return this.http.delete<CardDtoResponse>(`${this.baseUrl}Card/DeleteCard/${id}`)

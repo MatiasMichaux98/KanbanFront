@@ -13,14 +13,17 @@
                   <div class="MainCard">
                     <p>{{card.title}}</p>
                     <p>{{card.descripcion}}</p>
-                    <button (click)="AbrirModalDelete(card)">Eliminar</button>
-                    <button>Editar</button>
+                    <button class="Cruz" matButton [matMenuTriggerFor]="menu">X</button>
+                    <mat-menu #menu="matMenu">
+                      <button  mat-menu-item (click)="AbrirModalDelete(card)">Eliminar</button>
+                      <button  mat-menu-item (click)="AbrirModalUpdate(card)">Editar</button>
+                    </mat-menu>          
                   </div>
                 </div>   
               </div>
              
               <div class="CreateCard">
-                <button mat-icon-button (click)="AbrirModalCreate(list.listId)">+ CrearCard</button>
+                <button  (click)="AbrirModalCreate(list.listId)">+ CrearCard</button>
               </div>
             </li>
            </ul>
