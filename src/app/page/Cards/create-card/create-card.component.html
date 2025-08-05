@@ -1,0 +1,21 @@
+<div class="MainContainer">
+    <form (ngSubmit)="createCard()">
+      <label for="nombre">Nombre de la card</label>
+      <input
+        type="text"
+        id="nombre"
+        [(ngModel)]="title"
+        name="nombre"
+        required
+      />
+      <label for="nombre">descripcion de la card</label>
+      <input
+        type="text"
+        id="description"
+        [(ngModel)]="description"
+        name="description"
+        required
+      />
+      <button type="submit">Crear</button>
+    </form>
+  </div>

@@ -1,7 +1,7 @@
 import { CardDtoResponse } from "../Card/CardDtoResponse";
 
 export interface ListaResponse {
-    ListaId: number;
+    listId: number;
     nombre: string;
     Order: number;
     BoardId: number;
