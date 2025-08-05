@@ -1,9 +1,9 @@
 
-    <div *ngIf="Board">
-        <h2>{{ Board.nombre }}</h2>
+    <div *ngIf="board">
+        <h2>{{ board.nombre }}</h2>
       <div class="MainContainer">
-          <ul *ngIf="Board.lists?.length">
-            <li *ngFor="let list of Board.lists; let i = index">
+          <ul *ngIf="board.lists?.length">
+            <li *ngFor="let list of board.lists; let i = index">
               <div class="TitulosMain">
                 <strong>{{ list.nombre }}</strong>
               </div>
@@ -13,6 +13,8 @@
                   <div class="MainCard">
                     <p>{{card.title}}</p>
                     <p>{{card.descripcion}}</p>
+                    <button (click)="AbrirModalDelete(card)">Eliminar</button>
+                    <button>Editar</button>
                   </div>
                 </div>   
               </div>
