@@ -13,8 +13,9 @@
                   <div class="MainCard">
                     <p>{{card.title}}</p>
                     <p>{{card.descripcion}}</p>
-                    <button class="Cruz" matButton [matMenuTriggerFor]="menu">X</button>
-                    <mat-menu #menu="matMenu">
+
+                    <button class="Cruz" [matMenuTriggerFor]="menuRef">⋮</button>
+                      <mat-menu #menuRef="matMenu">
                       <button  mat-menu-item (click)="AbrirModalDelete(card)">Eliminar</button>
                       <button  mat-menu-item (click)="AbrirModalUpdate(card)">Editar</button>
                     </mat-menu>          

@@ -21,6 +21,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './board-id.component.css'
 })
 export class BoardIDComponent {
+      selectedCard: CardDtoResponse | null = null;
       private route = inject(ActivatedRoute);
       private boardService = inject(BoardService);
       BoardId: number = 0;
