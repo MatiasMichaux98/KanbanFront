@@ -16,6 +16,11 @@
         name="description"
         required
       />
+      <label for="tag">Etiqueta:</label>
+      <select [(ngModel)]="selectedTagId" name="tag">
+        <option [ngValue]="null">Sin etiqueta</option>
+        <option *ngFor="let tag of tags" [value]="tag.id">{{ tag.nombre }}</option>
+      </select>
       <button type="submit">Crear</button>
     </form>
   </div>

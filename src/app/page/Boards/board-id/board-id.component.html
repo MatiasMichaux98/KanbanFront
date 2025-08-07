@@ -4,12 +4,15 @@
       <div class="MainContainer">
           <ul *ngIf="board.lists?.length">
             <li *ngFor="let list of board.lists; let i = index">
+              
               <div class="TitulosMain">
                 <strong>{{ list.nombre }}</strong>
               </div>
               
               <div class="cardContainer">
                 <div *ngFor="let card of list.cards">
+                  <pre>{{ card | json }}</pre>
+
                   <div class="MainCard">
                     <p>{{card.title}}</p>
                     <p>{{card.descripcion}}</p>
@@ -19,6 +22,14 @@
                       <button  mat-menu-item (click)="AbrirModalDelete(card)">Eliminar</button>
                       <button  mat-menu-item (click)="AbrirModalUpdate(card)">Editar</button>
                     </mat-menu>          
+
+                    <div *ngIf="card.tag; else noTag">
+                      <p style="background-color: red;">{{ card.tag.nombre }}</p>
+                    </div>
+                    
+                    <ng-template #noTag>
+                      <p style="color: gray;">Esta tarjeta no tiene etiquetas.</p>
+                    </ng-template>
                   </div>
                 </div>   
               </div>
