@@ -12,11 +12,13 @@ import { UpdateCardComponent } from '../../Cards/update-card/update-card.compone
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { CdkDragDrop , CdkDropList , CdkDrag , moveItemInArray, transferArrayItem} from  '@angular/cdk/drag-drop' ;
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-board-id',
   standalone: true,
-  imports: [CommonModule,MatButtonModule,MatMenuModule],
+  imports: [CommonModule,MatButtonModule,MatMenuModule,CdkDrag,CdkDropList ,DragDropModule ],
   templateUrl: './board-id.component.html',
   styleUrl: './board-id.component.css'
 })
@@ -89,4 +91,61 @@ export class BoardIDComponent {
           }
         })
       }
+
+      connectedDropLists(currentListId: number):string[]{
+        if(!this.board || !this.board.lists) return []
+        return this.board.lists
+          .filter(list => list.listId !== currentListId)
+          .map(list => 'list-' + list.listId)
+      }
+
+      drop(event: CdkDragDrop<CardDtoResponse[]>) {
+        if (event.previousContainer === event.container) {
+          moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        } else {
+          transferArrayItem(
+            event.previousContainer.data,
+            event.container.data,
+            event.previousIndex,
+            event.currentIndex,
+          );
+        }
+        this.cdr.detectChanges();
+      }
+      
+      trackByCardId(index: number, card: any): any {
+        return index;
+      }
+
+      getColor(tagNombre: string){
+        switch(tagNombre){
+           case 'error': return '#d73a4a';
+           case 'documentación': return '#0366d6 ';
+           case 'duplicado': return '#cfd3d7';
+           case 'mejora': return '#a2eeef';
+           case 'buen primer issue': return '#7057ff';
+           case 'se necesita ayuda': return '#008672 ';
+           case 'inválido': return '#e4e669 ';
+           case 'pregunta': return '#d876e3';
+           case 'no se arreglará': return '#b60205 ';
+           case 'necesita revisión': return '#fbca04';
+           default: return  'gray';
+        }
+      }
+      colorNombre(tagNombre: string){
+        switch(tagNombre){
+           case 'error': return 'white';
+           case 'documentación': return 'white';
+           case 'duplicado': return 'black';
+           case 'mejora': return 'black';
+           case 'buen primer issue': return 'white';
+           case 'se necesita ayuda': return 'white';
+           case 'inválido': return 'black';
+           case 'pregunta': return 'white';
+           case 'no se arreglará': return 'white ';
+           case 'necesita revisión': return 'white';
+           default: return  'gray';
+        }
+      }
+      
 }
