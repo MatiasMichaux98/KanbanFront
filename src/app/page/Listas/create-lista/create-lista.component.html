@@ -1,0 +1,13 @@
+<div class="MainContainer">
+    <form (ngSubmit)="createLista()">
+      <label for="nombre">Nombre del Board</label>
+      <input
+        type="text"
+        id="nombre"
+        [(ngModel)]="newLista.nombre"
+        name="nombre"
+        required
+      />
+      <button type="submit">Crear</button>
+    </form>
+  </div>

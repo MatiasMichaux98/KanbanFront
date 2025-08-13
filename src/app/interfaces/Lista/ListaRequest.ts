@@ -1,3 +1,5 @@
 export interface ListaRequest {
-    nombre: string 
-}
+    listId?: number; 
+    nombre: string;
+    BoardId: number;
+  }

@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { BoardService } from '../../../services/board.service';
 import { ActivatedRoute } from '@angular/router';
 import { BoardResponse } from '../../../interfaces/Board/BoardResponse';
-import { NgFor, NgIf } from '@angular/common';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CreateCardComponent } from '../../Cards/create-card/create-card.component';
 import { CardDtoResponse } from '../../../interfaces/Card/CardDtoResponse';
@@ -14,6 +13,10 @@ import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { CdkDragDrop , CdkDropList , CdkDrag , moveItemInArray, transferArrayItem} from  '@angular/cdk/drag-drop' ;
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { UpdateListaComponent } from '../../Listas/update-lista/update-lista.component';
+import { CreateListaComponent } from '../../Listas/create-lista/create-lista.component';
+import { DialogRef } from '@angular/cdk/dialog';
+import { DeleteListaComponent } from '../../Listas/delete-lista/delete-lista.component';
 
 @Component({
   selector: 'app-board-id',
@@ -28,7 +31,7 @@ export class BoardIDComponent {
       private boardService = inject(BoardService);
       BoardId: number = 0;
       board!: BoardResponse;
-      lista!: ListaResponse;
+      lista: ListaResponse[] = [];
       newCardTitle: string = '';
       newCardDescription: string = '';
 
@@ -50,7 +53,7 @@ export class BoardIDComponent {
           }
         })
       }
-
+      //card modal 
       AbrirModalCreate(listId: number):void{
         const dialogRef = this._matDialog.open(CreateCardComponent,{
           data:{listId}
@@ -91,7 +94,48 @@ export class BoardIDComponent {
           }
         })
       }
+      //lista modal 
+      AbrirModalCreateLista(BoardId: number):void{
+        const dialogRef = this._matDialog.open(CreateListaComponent,{
+          data:{BoardId }
+        });
+        dialogRef.afterClosed().subscribe((createLista:ListaResponse) => {
+          if(createLista && this.board?.lists){
+            this.board.lists.push(createLista)
+              this.cdr.detectChanges(); 
+          }
+          this.cdr.detectChanges(); 
+        })
+      }
+      AbrirModalUpdateLista(lista:ListaResponse):void{
+        const dialogRef = this._matDialog.open(UpdateListaComponent,{
+          data:lista
+        })
+        dialogRef.afterClosed().subscribe((updateLista:ListaResponse) => {
+          if(updateLista && this.board.lists ){
+            this.board.lists = this.board.lists.map(l => 
+              l.listId == updateLista.listId? {...l, nombre:updateLista.nombre}: l
+            )
+            this.cdr.detectChanges();
+          }
+        })
+        }
+        
+      AbrirModalDeleteLista(lista:ListaResponse):void{
+        const dialogRef = this._matDialog.open(DeleteListaComponent,{
+          data:lista
+        })
+        dialogRef.afterClosed().subscribe((deleteLista:ListaResponse) => {
+          if(deleteLista && this.board.lists){
+            this.board.lists = this.board.lists.filter(l => l.listId !== deleteLista.listId
+            )
+            this.cdr.detectChanges();
 
+          }
+        })
+      }
+
+      //drag and drop 
       connectedDropLists(currentListId: number):string[]{
         if(!this.board || !this.board.lists) return []
         return this.board.lists

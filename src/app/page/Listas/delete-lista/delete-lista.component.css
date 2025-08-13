@@ -1,0 +1,43 @@
+.MainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .form-card {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  h2 {
+    color: #37474f;  
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .BtnDelete {
+    background-color: #ef5350; 
+    color: white;
+    padding: 11px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .BtnDelete:hover {
+    background-color: #c62828; }
+  

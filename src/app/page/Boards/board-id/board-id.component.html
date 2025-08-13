@@ -5,8 +5,15 @@
           <ul *ngIf="board.lists?.length">
             <li *ngFor="let list of board.lists; let i = index">
               
-              <div class="TitulosMain" cdkDrag>
+              <div class="TitulosMain" >
                 <strong>{{ list.nombre }}</strong>
+                <div>
+                  <button class="point" [matMenuTriggerFor]="menuRefe">⋯</button>
+                      <mat-menu #menuRefe="matMenu">
+                      <button  mat-menu-item (click)="AbrirModalUpdateLista(list)">Editar</button>
+                      <button  mat-menu-item (click)="AbrirModalDeleteLista(list)">Eliminar</button>
+                    </mat-menu>    
+                </div>
               </div>
               
               <div class="cardContainer" 
@@ -22,7 +29,7 @@
                     <p>{{card.title}}</p>
                     <p>{{card.descripcion}}</p>
 
-                    <button class="Cruz" [matMenuTriggerFor]="menuRef">⋮</button>
+                    <button class="Cruz" [matMenuTriggerFor]="menuRef">⋯</button>
                       <mat-menu #menuRef="matMenu">
                       <button  mat-menu-item (click)="AbrirModalDelete(card)">Eliminar</button>
                       <button  mat-menu-item (click)="AbrirModalUpdate(card)">Editar</button>
@@ -44,6 +51,9 @@
                 <button  (click)="AbrirModalCreate(list.listId)">+ CrearCard</button>
               </div>
             </li>
+            <div class="AddList">
+              <button (click)="AbrirModalCreateLista(BoardId)">+</button>
+            </div>
            </ul>
         </div>
     </div>
