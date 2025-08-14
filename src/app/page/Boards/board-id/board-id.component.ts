@@ -67,19 +67,24 @@ export class BoardIDComponent {
           this.cdr.detectChanges(); 
         })
       }
-      AbrirModalUpdate(card:CardDtoResponse):void{
-        const dialogRef = this._matDialog.open(UpdateCardComponent,{
-          data:card
-        })
-        dialogRef.afterClosed().subscribe((updateCard:CardDtoResponse) => {
-          if(updateCard && this.board?.lists){
-            this.board.lists.forEach(list => {
-              list.cards = list.cards.map(c => c.cardId == updateCard.cardId? updateCard : c)
-            })
-            this.cdr.detectChanges();
+      AbrirModalUpdate(card: CardDtoResponse): void {
+        const dialogRef = this._matDialog.open(UpdateCardComponent, { data: card });
+      
+        dialogRef.afterClosed().subscribe((updateCard: CardDtoResponse) => {
+          if (updateCard && this.board?.lists) {
+            this.board.lists = this.board.lists.map(list => {
+              return{
+                ...list,
+                cards: list.cards.map(card => 
+                  card.cardId === updateCard.cardId ? updateCard : card
+                )
+              }
+            });
+            this.cdr.detectChanges(); 
           }
-        })
+        });
       }
+      
       AbrirModalDelete(card:CardDtoResponse):void{
         const dialogRef = this._matDialog.open(DeleteCardComponent,{
           data: card
@@ -158,7 +163,7 @@ export class BoardIDComponent {
       }
       
       trackByCardId(index: number, card: any): any {
-        return index;
+        return card.cardId;
       }
 
       getColor(tagNombre: string){

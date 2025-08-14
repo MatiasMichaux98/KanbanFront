@@ -31,7 +31,7 @@ export class CreateCardComponent {
     this.loadTag()
   }
   loadTag():void{
-    this.tagService.GetListas().subscribe({
+    this.tagService.GetTag().subscribe({
       next: (response: TagDtoResponse[]) => {
         this.tags = response;
       },
