@@ -1,0 +1,109 @@
+.landing-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px); /* Ajustá según tu header */
+    background: linear-gradient(135deg, #201A1E, #32232f);
+    padding: 40px 20px;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    gap: 40px;
+  }
+  
+  .content {
+    max-width: 480px;
+    flex: 1 1 400px;
+  }
+  
+  .content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #c21ac2;
+  }
+  
+  .subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #D88FD8;
+  }
+  
+  .description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  .features-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+  }
+  
+  .features-list li {
+    font-size: 1.15rem;
+    margin-bottom: 15px;
+    padding-left: 28px;
+    position: relative;
+    cursor: default;
+    user-select: none;
+  }
+  
+  .features-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #43a047;
+  }
+  
+  .image-container {
+    flex: 1 1 400px;
+    max-width: 480px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image-container img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    user-select: none;
+    pointer-events: none;
+    border-radius: 50%;
+  }
+  .example-button-row{
+    width: 700px; 
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  .example-button-row button{
+    padding: 10px;
+    border-radius: 20px;
+    background-color: transparent;
+    border: 1px solid  #e6d7e9;
+    color: #e6d7e9;
+    cursor: pointer;
+  }
+  .example-button-row button:hover{
+      background-color: #161215;
+  }

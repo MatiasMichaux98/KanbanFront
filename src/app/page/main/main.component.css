@@ -1,0 +1,51 @@
+.main{
+    position: relative;
+}
+.note-left{
+    position: absolute;
+    left: 300px;
+    display: flex;
+    align-items: center;
+}
+.arrow {
+    width: 0; 
+    height: 0; 
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent; 
+    border-right: 25px solid #fff59d; 
+    margin-right: -5px; 
+  }
+.note {
+    background-color: #fff59d; 
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    font-family: 'Arial', sans-serif;
+    transform: rotate(-2deg); 
+    margin: 40px auto;
+    text-align: center;
+  }
+  .note h2 {
+    margin-top: 0;
+    color: #f57f17;
+  }
+  .note p {
+    color: #5d4037;
+    font-size: 0.95em;
+  }
+
+  @media (max-width: 960px) {
+    .note{
+      width: 200px;
+    }
+    .note-left{
+      left: 200px;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .note-left{
+      left: 100px;
+    }
+  }
