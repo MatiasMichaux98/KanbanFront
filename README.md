@@ -1,27 +1,59 @@
-# KanbanFront
+<h1>KanbanFront</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.12.
+<p>Frontend para la aplicación Kanban, desarrollado en <strong>Angular 17</strong> con <strong>Angular Material</strong>.</p>
 
-## Development server
+<h2>Tecnologías usadas</h2>
+<ul>
+  <li>Angular 17.3.0</li>
+  <li>TypeScript 5.4.2</li>
+  <li>Angular Material 17.3.10</li>
+  <li>RxJS 7.8.0</li>
+  <li>HTML / CSS / JavaScript</li>
+</ul>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<h2>Instalación de dependencias</h2>
+<p>Antes de ejecutar el proyecto, instalar las dependencias mediante <code>npm</code>:</p>
+<pre><code>npm install</code></pre>
+<p>Esto instalará todas las librerías listadas en <code>package.json</code>, incluyendo Angular Material, RxJS y las herramientas de desarrollo.</p>
 
-## Code scaffolding
+<h2>Requisitos</h2>
+<ul>
+  <li><a href="https://nodejs.org/">Node.js (16+)</a></li>
+  <li><a href="https://angular.io/cli">Angular CLI 17+</a></li>
+  <li>Visual Studio Code o tu editor preferido</li>
+  <li>Backend KanbanBack disponible para conectarse</li>
+</ul>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<h2>Configuración del backend</h2>
+<p>En <code>src/environments/environment.ts</code> definir la URL de tu backend:</p>
+<pre><code>export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:5000/api'
+};</code></pre>
+<p>Reemplazar <code>http://localhost:5000/api</code> con la URL donde se esté ejecutando tu backend.</p>
 
-## Build
+<h2>Ejecución</h2>
+<ol>
+  <li>Levantar el proyecto en modo desarrollo:
+    <pre><code>npm start
+# o alternativamente
+ng serve</code></pre>
+  </li>
+  <li>El frontend se ejecutará por defecto en:
+    <pre><code>http://localhost:4200</code></pre>
+  </li>
+</ol>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+<h2>Angular Material</h2>
+<p>Se utiliza el tema predefinido <code>indigo-pink</code>, que se importa automáticamente en <code>angular.json</code>.</p>
 
-## Running unit tests
+<h2>Testing</h2>
+<p>Para ejecutar tests unitarios:</p>
+<pre><code>ng test</code></pre>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<h2>Notas</h2>
+<ul>
+  <li>Si querés conectarlo con el backend, asegurate de que la API esté corriendo y la URL esté bien configurada en los archivos de entorno.</li>
+  <li>Se puede cambiar el puerto de Angular modificando <code>angular.json → serve → options → port</code> si 4200 ya está en uso.</li>
+</ul>
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
